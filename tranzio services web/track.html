@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tranzio Services | Track Package</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ===== STATUS TIMELINE ===== */
+    .status-timeline {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0;
+      list-style: none;
+      padding: 0;
+    }
+
+    .status-timeline li {
+      flex: 1;
+      position: relative;
+      text-align: center;
+      font-weight: bold;
+      color: #ccc;
+      transition: color 0.5s;
+    }
+
+    .status-timeline li::before {
+      content: '✓';
+      width: 20px;
+      height: 20px;
+      background: #ccc;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 10px auto;
+      line-height: 20px;
+      color: transparent;
+      transition: background 0.5s, color 0.5s, transform 0.5s;
+    }
+
+    .status-timeline li::after {
+      content: '';
+      position: absolute;
+      top: 9px;
+      left: 50%;
+      height: 2px;
+      width: 100%;
+      background: #ccc;
+      z-index: -1;
+      transition: background 0.5s;
+    }
+
+    .status-timeline li:first-child::after {
+      left: 50%;
+      width: 50%;
+    }
+
+    .status-timeline li:last-child::after {
+      width: 0;
+    }
+
+    .status-completed {
+      color: #3f7fff;
+    }
+
+    .status-completed::before {
+      background: #3f7fff;
+      color: #fff;
+      transform: scale(1.2);
+    }
+
+    .status-completed::after {
+      background: #3f7fff;
+    }
+
+    /* Tracking input styling */
+    .tracking-form input {
+      padding: 12px;
+      width: 250px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-right: 10px;
+    }
+
+    .tracking-form button {
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: none;
+      background: #ff6a00;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .tracking-form button:hover {
+      background: #ff8500;
+    }
+
+    .tracking-result .package-info p {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <img src="images/tranzio-logo-transparent.png" alt="Tranzio Logo" class="logo">
+      <nav>
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+        <li><a href="services.html">SERVICES</a></li>
+        <li><a href="track.html">TRACK PACKAGE</a></li>
+        <li><a href="tranzio-portal.html">TRANZIO PORTAL</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="tracking">
+      <div class="container">
+        <h2>Track Your Package</h2>
+        <form class="tracking-form" onsubmit="return checkPackage(event)">
+          <input type="text" id="packageId" placeholder="Enter Package ID" required>
+          <button type="submit">Track</button>
+        </form>
+        <div class="tracking-result" id="trackingResult"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Tranzio Services L.L.C. All rights reserved.
+  </footer>
+
+  <!-- Packages JS -->
+  <script src="js/packages.js"></script>
+
+  <script>
+    let currentTrackedId = null;
+
+    // Triggered when user submits tracking form
+    function checkPackage(event) {
+      if (event) event.preventDefault();
+      currentTrackedId = document.getElementById("packageId").value.trim().toUpperCase();
+      updateTrackingResult();
+    }
+
+    // Update tracking info dynamically
+    function updateTrackingResult() {
+      const resultDiv = document.getElementById("trackingResult");
+      if (!currentTrackedId) return;
+
+      const pkg = packages[currentTrackedId];
+      if (!pkg) {
+        resultDiv.innerHTML = `<p style="color:red;">Package ID not found. Please check and try again.</p>`;
+        return;
+      }
+
+      // Timeline with timestamps
+      let steps = [
+        { name: "Picked Up", key: "pickedUp" },
+        { name: "En Route", key: "enRoute" },
+        { name: "Delivered", key: "delivered" }
+      ];
+
+      let timelineHTML = '<ul class="status-timeline">';
+      steps.forEach((step, index) => {
+        let isCompleted = steps.findIndex(s => s.name === pkg.status) >= index;
+        let className = isCompleted ? "status-completed" : "";
+        let timeText = pkg.timestamps[step.key] ? `<br><small>${pkg.timestamps[step.key]}</small>` : "";
+        timelineHTML += `<li class="${className}">${step.name}${timeText}</li>`;
+      });
+      timelineHTML += '</ul>';
+
+      // Proof of delivery
+      let proofHTML = '';
+      if (pkg.proof) {
+        proofHTML = `
+          <p><strong>Proof of Delivery:</strong></p>
+          <img src="${pkg.proof}" alt="Proof of Delivery" style="max-width:300px; width:100%; border-radius:8px; margin-top:10px;">
+        `;
+      }
+
+      resultDiv.innerHTML = `
+        <div class="package-info">
+          <p><strong>Package ID:</strong> ${currentTrackedId}</p>
+          ${timelineHTML}
+          ${proofHTML}
+        </div>
+      `;
+    }
+
+    // Poll every 3 seconds to simulate real-time updates
+    setInterval(updateTrackingResult, 3000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tranzio Services Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+  <div class="container header-container" style="display:flex;align-items:center;justify-content:space-between;">
+    <img src="images/tranzio-logo-transparent.png" alt="Tranzio Logo" class="logo">
+    <nav>
+      <ul class="nav-links" style="display:flex;gap:20px;align-items:center;">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="services.html">SERVICES</a></li>
+        <li><a href="track.html">TRACK PACKAGE</a></li>
+        <li><a href="tranzio-portal.html">TRANZIO PORTAL</a></li>
+        <li><button id="logoutBtn" style="padding:8px 15px;background:#ff6a00;color:white;border:none;border-radius:6px;cursor:pointer;transition:0.3s;">Logout</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+  <main>
+    <div class="portal-container" style="max-width:1200px;margin:40px auto;padding:0 20px;">
+      <div class="portal-cards" id="portalCards" style="display:flex;flex-wrap:wrap;justify-content:center;gap:40px;">
+
+        <div class="card">
+          <i class="fas fa-user fa-3x"></i>
+          <h3><a href="client-dashboard.html">Client Login</a></h3>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-truck fa-3x"></i>
+          <h3><a href="driver-confirmation.html">Delivery Confirmation</a></h3>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-user fa-3x"></i>
+          <h3><a href="driver.html">Driver Login</a></h3>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-broom fa-3x"></i>
+          <h3><a href="cleaning-confirmation.html">Cleaning Confirmation</a></h3>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-user-plus fa-3x"></i>
+          <h3><a href="apply.html">Join Tranzio Services</a></h3>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-container">
+      <p>&copy; 2025 Tranzio Services L.L.C. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+  // Access control: check if logged in
+  if(localStorage.getItem('tranzioLoggedIn') !== 'true') {
+    window.location.href = 'tranzio-portal-login.html';
+  }
+
+  // Logout functionality
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('tranzioLoggedIn');
+    window.location.href = 'tranzio-portal-login.html';
+  });
+</script>
+
+</body>
+</html>

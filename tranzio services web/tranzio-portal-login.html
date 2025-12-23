@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tranzio Portal Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <div class="login-form" style="max-width:400px;margin:80px auto;padding:30px;background:#f5f7fa;border-radius:12px;text-align:center;">
+      <h2>Tranzio Portal Login</h2>
+      <div class="login-error" id="loginError"></div>
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button onclick="login()">Login</button>
+    </div>
+  </main>
+
+  <script>
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const errorDiv = document.getElementById('loginError');
+
+      // Hardcoded credentials
+      if(username === 'admin' && password === 'tranzio123') {
+        localStorage.setItem('tranzioLoggedIn', 'true');
+        window.location.href = 'tranzio-portal.html';
+      } else {
+        errorDiv.textContent = 'Invalid username or password.';
+      }
+    }
+  </script>
+</body>
+</html>
