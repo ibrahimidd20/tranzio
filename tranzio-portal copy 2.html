@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tranzio Services | Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .portal-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .login-form {
+      max-width: 400px;
+      margin: 0 auto 40px auto;
+      padding: 30px;
+      background: #f5f7fa;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .login-form h2 {
+      color: #0a3cff;
+      margin-bottom: 25px;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .login-form button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      background: #ff6a00;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .login-form button:hover {
+      background: #ff8500;
+    }
+
+    .portal-cards {
+      display: none; /* hidden until login success */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+    }
+
+    .portal-cards .card {
+      background: #fff;
+      padding: 30px 20px;
+      width: 220px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .portal-cards .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    .portal-cards .card i {
+      color: #ff6a00;
+      margin-bottom: 15px;
+    }
+
+    .portal-cards .card h3 {
+      margin-bottom: 10px;
+      color: #0a3cff;
+    }
+
+    .portal-cards .card a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .login-error {
+      color: red;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <img src="images/tranzio-logo-transparent.png" alt="Tranzio Logo" class="logo">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="services.html">SERVICES</a></li>
+          <li><a href="track.html">TRACK PACKAGE</a></li>
+          <li><a href="tranzio-portal.html">TRANZIO PORTAL</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="portal-container">
+
+      <!-- LOGIN FORM -->
+      <div class="login-form" id="loginFormDiv">
+        <h2>Tranzio Portal Login</h2>
+        <div class="login-error" id="loginError"></div>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button onclick="portalLogin()">Login</button>
+      </div>
+
+      <!-- PORTAL CARDS -->
+      <div class="portal-cards" id="portalCards">
+        <div class="card">
+          <i class="fas fa-user fa-3x"></i>
+          <h3><a href="client-dashboard.html">Client Login</a></h3>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-truck fa-3x"></i>
+          <h3><a href="driver-confirmation.html">Delivery Confirmation</a></h3>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-user fa-3x"></i>
+          <h3><a href="driver.html">Driver Login</a></h3>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-broom fa-3x"></i>
+          <h3><a href="cleaning-confirmation.html">Cleaning Confirmation</a></h3>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-user-plus fa-3x"></i>
+          <h3><a href="apply.html">Join Tranzio Services</a></h3>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-container">
+      <p>&copy; 2025 Tranzio Services L.L.C. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function portalLogin() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const errorDiv = document.getElementById('loginError');
+      const portalCards = document.getElementById('portalCards');
+      const loginFormDiv = document.getElementById('loginFormDiv');
+
+      // Simple hardcoded credentials for MVP
+      if(username === 'admin' && password === 'tranzio123') {
+        errorDiv.textContent = '';
+        loginFormDiv.style.display = 'none';
+        portalCards.style.display = 'flex';
+      } else {
+        errorDiv.textContent = 'Invalid username or password.';
+      }
+    }
+  </script>
+</body>
+</html>

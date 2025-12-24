@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tranzio Services | Track Package</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <img src="images/tranzio-logo-transparent.png" alt="Tranzio Logo" class="logo">
+      <nav>
+        <!--<ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="track.html">Track Package</a></li>
+          <li><a href="client-dashboard.html">Dashboard</a></li>
+          <li><a href="driver-confirmation.html">Driver Upload</a></li>
+        </ul>-->
+
+        <ul class="nav-links">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="services.html">SERVICES</a></li>
+          <li><a href="track.html">TRACK PACKAGE</a></li>
+          <li><a href="tranzio-portal.html">TRANZIO PORTAL</a></li>
+          <!--<li><a href="client-dashboard.html">CLIENT DASHBOARD</a></li>
+          <li><a href="driver.html">DRIVER LOGIN</a></li>
+          <li><a href="driver-confirmation.html">Driver Upload</a></li>
+          <li><a href="admin.html">ADMIN LOGIN</a></li> -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="tracking">
+      <div class="container">
+        <h2>Track Your Package</h2>
+        <form class="tracking-form" onsubmit="return checkPackage(event)">
+          <input type="text" id="packageId" placeholder="Enter Package ID" required>
+          <button type="submit">Track</button>
+        </form>
+        <div class="tracking-result" id="trackingResult"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Tranzio Services L.L.C. All rights reserved.
+  </footer>
+
+  <script src="js/packages.js"></script>
+<script>
+  function checkPackage(event) {
+    event.preventDefault();
+    const id = document.getElementById("packageId").value.trim().toUpperCase();
+    const resultDiv = document.getElementById("trackingResult");
+
+    if (packages[id]) {
+      const pkg = packages[id];
+      let html = `
+        <div class="package-info">
+          <p><strong>Package ID:</strong> ${id}</p>
+          <p><strong>Status:</strong> ${pkg.status}</p>
+      `;
+
+      if (pkg.proof) {
+        html += `
+          <p><strong>Proof of Delivery:</strong></p>
+          <img src="${pkg.proof}" alt="Proof of Delivery" style="max-width:300px; width:100%; border-radius:8px; margin-top:10px;">
+        `;
+      }
+
+      html += `</div>`;
+      resultDiv.innerHTML = html;
+    } else {
+      resultDiv.innerHTML = `<p style="color:red;">Package ID not found. Please check and try again.</p>`;
+    }
+  }
+</script>
+
+</body>
+</html>

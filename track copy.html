@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Your Package | Tranzio Services</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container header-container">
+      <img src="images/tranzio-logo.png" alt="Tranzio Logo" class="logo">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="track.html">TRACK PACKAGE</a></li>
+          <li><a href="client-dashboard.html">CLIENT DASHBOARD</a></li>
+          <li><a href="driver.html">DRIVER LOGIN</a></li>
+          <li><a href="admin.html">ADMIN LOGIN</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== PACKAGE TRACKING ===== -->
+  <section class="tracking">
+    <div class="container">
+      <h2>Track Your Package</h2>
+      <p>Enter your Package ID below to see the status of your delivery.</p>
+
+      <div class="tracking-form">
+        <input type="text" id="packageIdInput" placeholder="Enter Package ID (e.g. TRZ-1105)">
+        <button onclick="trackPackage()" class="btn primary-btn">Track</button>
+      </div>
+
+      <div id="trackingResult" class="tracking-result">
+        <!-- Mock tracking info will appear here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container footer-container">
+      <p>&copy; 2025 Tranzio Services L.L.C. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/tracking.js"></script>
+</body>
+</html>

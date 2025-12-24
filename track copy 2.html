@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tranzio Services | Track Package</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <img src="images/tranzio-logo.png" alt="Tranzio Logo" class="logo">
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="track.html">Track Package</a></li>
+          <li><a href="client-dashboard.html">Dashboard</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="tracking">
+      <div class="container">
+        <h2>Track Your Package</h2>
+        <form class="tracking-form" onsubmit="return checkPackage(event)">
+          <input type="text" id="packageId" placeholder="Enter Package ID" required>
+          <button type="submit">Track</button>
+        </form>
+        <div class="tracking-result" id="trackingResult"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Tranzio Services L.L.C. All rights reserved.
+  </footer>
+
+  <script>
+    // ===== Sample Package Data (Simulation) =====
+    const packages = {
+      "TRZ1001": "Picked Up",
+      "TRZ1002": "En Route",
+      "TRZ1003": "Delivered",
+      "TRZ1004": "Picked Up",
+      "TRZ1005": "En Route"
+    };
+
+    function checkPackage(event) {
+      event.preventDefault();
+      const id = document.getElementById("packageId").value.trim().toUpperCase();
+      const resultDiv = document.getElementById("trackingResult");
+
+      if (packages[id]) {
+        let status = packages[id];
+        resultDiv.innerHTML = `
+          <div class="package-info">
+            <p><strong>Package ID:</strong> ${id}</p>
+            <p><strong>Status:</strong> ${status}</p>
+          </div>
+        `;
+      } else {
+        resultDiv.innerHTML = `<p style="color:red;">Package ID not found. Please check and try again.</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
