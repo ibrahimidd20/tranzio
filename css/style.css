@@ -476,6 +476,142 @@ header nav ul li button:hover {
 }
 
 
+
+
+/* ===== CLIENT DASHBOARD ===== */
+.dashboard {
+  padding: 50px 0;
+}
+
+/* Header */
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.dashboard-header h1 {
+  font-size: 2.5rem;
+  color: #3f7fff;
+}
+
+.dashboard-header p {
+  color: #555;
+}
+
+/* Stats */
+.dashboard-stats {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.stat-card {
+  background: #fff;
+  padding: 25px 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.stat-card h3 {
+  font-size: 2.2rem;
+  color: #3f7fff;
+}
+
+.stat-card p {
+  color: #555;
+}
+
+/* Table */
+.dashboard-table h2 {
+  margin-bottom: 20px;
+  color: #3f7fff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+thead {
+  background: #3f7fff;
+  color: #fff;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+tbody tr:nth-child(even) {
+  background: #f5f7fa;
+}
+
+/* Status badges */
+.status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.status.delivered {
+  background: #dff4e5;
+  color: #1e7f43;
+}
+
+.status.in-progress {
+  background: #fff3cd;
+  color: #856404;
+}
+
+/* Proof */
+.proof {
+  font-weight: bold;
+}
+
+.coming-soon {
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.coming-soon-text {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Logout link */
+.logout-link {
+  color: #ffdfdf;
+}
+
+.logout-link:hover {
+  color: #ff6a00;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-stats {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  table {
+    font-size: 0.85rem;
+  }
+}
+
+
+
+
+
 /* ===== FOOTER ===== */
 footer {
   background: #3f7fff;
