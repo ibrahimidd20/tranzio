@@ -299,6 +299,115 @@ header nav ul li button:hover {
 }
 
 
+/* ===== SERVICES HERO ===== */
+.services-hero {
+  background: linear-gradient(
+      rgba(63, 127, 255, 0.85),
+      rgba(63, 127, 255, 0.85)
+    ),
+    url("../images/slider/slide1.png") center / cover no-repeat;
+  color: #fff;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.services-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.services-hero p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+/* ===== SERVICE DETAILS ===== */
+.service-detail {
+  text-align: left;
+}
+
+.service-detail h3 {
+  margin-top: 15px;
+  font-size: 1.6rem;
+}
+
+.service-detail p {
+  margin: 15px 0;
+  color: #444;
+}
+
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.service-list li {
+  margin-bottom: 10px;
+  padding-left: 25px;
+  position: relative;
+  font-size: 0.95rem;
+}
+
+.service-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #3f7fff;
+  font-weight: bold;
+}
+
+/* ===== SERVICE BUTTON ===== */
+.service-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 22px;
+  background: #3f7fff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.service-btn:hover {
+  background: #2f6be5;
+}
+
+/* ===== CTA ===== */
+.services-cta {
+  background: #f0f4ff;
+  padding: 70px 0;
+  text-align: center;
+}
+
+.services-cta h2 {
+  font-size: 2.2rem;
+  color: #3f7fff;
+  margin-bottom: 15px;
+}
+
+.services-cta p {
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.cta-btn {
+  padding: 14px 30px;
+  background: #ff6a00;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.cta-btn:hover {
+  background: #ff8500;
+}
+
+
+
 /* ===== LOGIN PAGE ===== */
 .login-page {
   flex: 1;
