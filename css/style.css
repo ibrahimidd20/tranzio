@@ -298,6 +298,75 @@ header nav ul li button:hover {
   color: inherit;
 }
 
+
+/* ===== LOGIN PAGE ===== */
+.login-page {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background: #f5f7fa;
+}
+
+.login-wrapper {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.login-logo {
+  width: 160px;
+  margin-bottom: 25px;
+}
+
+.login-form {
+  background: #ffffff;
+  padding: 35px 30px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  color: #3f7fff;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #ff6a00;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background: #ff8500;
+}
+
+.login-error {
+  background: #ffe0e0;
+  color: #b00000;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+
+
 /* ===== FOOTER ===== */
 footer {
   background: #3f7fff;
