@@ -1,80 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tranzio Services Portal</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-  <header>
-  <div class="container header-container" style="display:flex;align-items:center;justify-content:space-between;">
-    <img src="images/tranzio-logo-transparent.png" alt="Tranzio Logo" class="logo">
-    <nav>
-      <ul class="nav-links" style="display:flex;gap:20px;align-items:center;">
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="services.html">SERVICES</a></li>
-        <li><a href="track.html">TRACK PACKAGE</a></li>
-        <li><a href="tranzio-portal.html">TRANZIO PORTAL</a></li>
-        <li><button id="logoutBtn" style="padding:8px 15px;background:#ff6a00;color:white;border:none;border-radius:6px;cursor:pointer;transition:0.3s;">Logout</button></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tranzio Services | Client & Driver Portal</title>
 
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #f7f9fc, #eef2f7);
+      color: #222;
+    }
+
+    header {
+      background: #0d1b2a;
+      color: #fff;
+      padding: 25px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    header p {
+      margin-top: 6px;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .portal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .portal-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 30px 25px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .portal-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+    }
+
+    .portal-card i {
+      color: #1b4fd8;
+      margin-bottom: 15px;
+    }
+
+    .portal-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .portal-card p {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 18px;
+    }
+
+    .portal-btn,
+    .link-btn {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    .portal-btn {
+      background: #1b4fd8;
+      color: #fff;
+    }
+
+    .portal-btn:hover {
+      background: #163db0;
+    }
+
+    .portal-group .portal-sub-links {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .link-btn {
+      background: #f0f2f8;
+      color: #1b4fd8;
+    }
+
+    .link-btn:hover {
+      background: #1b4fd8;
+      color: #fff;
+    }
+
+    footer {
+      margin-top: 70px;
+      background: #0d1b2a;
+      color: #fff;
+      text-align: center;
+      padding: 18px 10px;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 500px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Tranzio Services Portal</h1>
+    <p>Delivery & Cleaning Solutions — Secure Access</p>
+  </header>
 
   <main>
-    <div class="portal-container" style="max-width:1200px;margin:40px auto;padding:0 20px;">
-      <div class="portal-cards" id="portalCards" style="display:flex;flex-wrap:wrap;justify-content:center;gap:40px;">
+    <section class="portal-grid">
 
-        <div class="card">
-          <i class="fas fa-user fa-3x"></i>
-          <h3><a href="client-dashboard.html">Client Login</a></h3>
-        </div>
-
-        <div class="card">
-          <i class="fas fa-truck fa-3x"></i>
-          <h3><a href="driver-confirmation.html">Delivery Confirmation</a></h3>
-        </div>
-
-        <div class="card">
-          <i class="fas fa-user fa-3x"></i>
-          <h3><a href="driver.html">Driver Login</a></h3>
-        </div>
-
-        <div class="card">
-          <i class="fas fa-broom fa-3x"></i>
-          <h3><a href="cleaning-confirmation.html">Cleaning Confirmation</a></h3>
-        </div>
-
-        <div class="card">
-          <i class="fas fa-user-plus fa-3x"></i>
-          <h3><a href="apply.html">Join Tranzio Services</a></h3>
-        </div>
-
+      <!-- Client Login -->
+      <div class="portal-card">
+        <i class="fas fa-user fa-3x"></i>
+        <h3>Client Login</h3>
+        <p>View service history, delivery status, and proof of completion.</p>
+        <button class="portal-btn" onclick="goToLogin('client')">Login</button>
       </div>
-    </div>
+
+      <!-- Driver Login -->
+      <div class="portal-card">
+        <i class="fas fa-id-badge fa-3x"></i>
+        <h3>Driver Login</h3>
+        <p>Manage assigned jobs and submit service confirmations.</p>
+        <button class="portal-btn" onclick="goToLogin('driver')">Login</button>
+      </div>
+
+      <!-- Service Confirmation -->
+      <div class="portal-card portal-group">
+        <i class="fas fa-clipboard-check fa-3x"></i>
+        <h3>Service Confirmation</h3>
+        <p>Confirm completed delivery or cleaning services.</p>
+
+        <div class="portal-sub-links">
+          <button class="link-btn" onclick="goToLogin('delivery')">
+            Delivery Confirmation
+          </button>
+          <button class="link-btn" onclick="goToLogin('cleaning')">
+            Cleaning Confirmation
+          </button>
+        </div>
+      </div>
+
+      <!-- Join Tranzio -->
+      <div class="portal-card">
+        <i class="fas fa-user-plus fa-3x"></i>
+        <h3>Join Tranzio Services</h3>
+        <p>Apply to work as a delivery driver or cleaning professional.</p>
+        <a href="apply.html" class="portal-btn">Apply Now</a>
+      </div>
+
+    </section>
   </main>
 
   <footer>
-    <div class="container footer-container">
-      <p>&copy; 2025 Tranzio Services L.L.C. All rights reserved.</p>
-    </div>
+    © <span id="year"></span> Tranzio Services L.L.C. All rights reserved.
   </footer>
 
   <script>
-  // Access control: check if logged in
-  if(localStorage.getItem('tranzioLoggedIn') !== 'true') {
-    window.location.href = 'tranzio-portal-login.html';
-  }
+    function goToLogin(role) {
+      localStorage.setItem("tranzioLoginRole", role);
+      window.location.href = "tranzio-portal-login.html";
+    }
 
-  // Logout functionality
-  document.getElementById('logoutBtn').addEventListener('click', () => {
-    localStorage.removeItem('tranzioLoggedIn');
-    window.location.href = 'tranzio-portal-login.html';
-  });
-</script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
